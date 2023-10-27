@@ -1,4 +1,4 @@
-import 'package:birthdate_reminder/ui/splash/splash_screen.dart';
+import 'package:birthdate_reminder/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
@@ -13,7 +13,7 @@ class App extends StatelessWidget {
       child: MaterialApp(
           title: 'یادآور تولد',
           theme: _myTheme,
-          home: const SplashScreen()
+          home: const HomeScreen()
       ),
     );
   }
