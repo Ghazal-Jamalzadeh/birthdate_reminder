@@ -71,8 +71,10 @@ class RefColor {
   static const pastelBlue = Color(0xFFCDFAD5);
   static const darkPink = Color(0xFFFF6D60);
   static const darkYellow = Color(0xFFF7D060);
+  static const darkerYellow = Color(0xFF624D27);
   static const darkLime = Color(0xFFE6FF3F);
   static const darkBlue = Color(0xFF98D8AA);
+  static const darkerBlue = Color(0xFF3A5243);
 
   static const neutralVariant100 = Color(0xFFF2F3F3);
   static const neutralVariant200 = Color(0xFFE4E7E7);
