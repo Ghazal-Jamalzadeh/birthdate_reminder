@@ -1,5 +1,7 @@
 import 'package:birthdate_reminder/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 import 'colors.dart';
 
@@ -9,6 +11,15 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        localizationsDelegates: const [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale("fa", "98"), // OR Locale('ar', 'AE') OR Other RTL locales
+        ],
+        locale: const Locale("fa") , // OR Locale('ar', 'AE')
         title: 'یادآور تولد',
         theme: _myTheme,
         home: const HomeScreen()

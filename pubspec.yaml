@@ -41,6 +41,7 @@ dependencies:
   hive_flutter: ^1.1.0
   persian_datetimepickers: ^1.0.3
   lottie: ^2.6.0
+  flutter_localization: ^0.1.14
 
 dev_dependencies:
   flutter_test:
