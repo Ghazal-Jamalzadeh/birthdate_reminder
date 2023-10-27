@@ -8,13 +8,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: MaterialApp(
-          title: 'یادآور تولد',
-          theme: _myTheme,
-          home: const HomeScreen()
-      ),
+    return MaterialApp(
+        title: 'یادآور تولد',
+        theme: _myTheme,
+        home: const HomeScreen()
     );
   }
 }
@@ -142,6 +139,6 @@ TextTheme _buildGymakTextTheme(TextTheme base) {
     // ),
   )
       .apply(
-    fontFamily: 'IRSans',
+    fontFamily: 'IranSans',
   );
 }

@@ -102,10 +102,11 @@ class BirthdateCard extends StatelessWidget {
                   ),
                   child:   Padding(
                     padding: const EdgeInsets.fromLTRB(8 , 0 , 8 , 0),
-                    child: Text('10 روز زودتر به من اطلاع بده', style: Theme
+                    child: Text('۱۰ روز زودتر به من اطلاع بده', style: Theme
                         .of(context)
                         .textTheme
-                        .bodySmall!.copyWith(color: RefColor.darkerYellow)),
+                        .bodySmall!.copyWith(color: RefColor.darkerYellow) ,
+                    textAlign: TextAlign.right),
                   ),
                 ),
               ],
