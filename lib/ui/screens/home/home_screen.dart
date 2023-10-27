@@ -19,18 +19,27 @@ class HomeScreen extends StatelessWidget {
         },
         child: Icon( CupertinoIcons.plus, size: 32, color: Colors.white,),
         tooltip: 'Add',
-        backgroundColor: SysColor.error,
+        backgroundColor: RefColor.darkPink,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      backgroundColor: RefColor.pastelPink,
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: BirthdateCard(),
-        );
-      },),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      backgroundColor: RefColor.pastelBlue,
+      body: Column(
+        children: [
+          SizedBox(height: 16,) ,
+          Expanded(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(16 , 8 , 16 , 8),
+                child: BirthdateCard(),
+              );
+            },),
+          ),
+          SizedBox(height: 16,)
+        ],
+      ),
     ) ;
   }
 }
