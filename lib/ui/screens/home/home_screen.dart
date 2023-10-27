@@ -25,9 +25,9 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: RefColor.pastelBlue,
       body: Column(
         children: [
-          SizedBox(height: 16,) ,
           Expanded(
             child: ListView.builder(
+              padding: EdgeInsets.fromLTRB(0, 56, 0, 32),
               physics: BouncingScrollPhysics(),
               itemCount: 10,
               itemBuilder: (context, index) {
@@ -37,7 +37,6 @@ class HomeScreen extends StatelessWidget {
               );
             },),
           ),
-          SizedBox(height: 16,)
         ],
       ),
     ) ;

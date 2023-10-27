@@ -9,108 +9,144 @@ class BirthdateCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white , 
-        borderRadius: BorderRadius.circular(2)
-      ),
+          color: Colors.white, borderRadius: BorderRadius.circular(2)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-          //--- icons ---//
-          Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Icon(Icons.arrow_back_ios, color: SysColor.onBackground,
-                  size: 16,),
-                Text('جزییات', style: Theme
-                    .of(context)
-                    .textTheme
-                    .bodyMedium,)
-              ],
+            //--- icons ---//
+            const SizedBox(
+              height: 8,
             ),
-
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(CupertinoIcons.bell_slash, size: 16,
-                  color: SysColor.onBackground,),
-                SizedBox(width: 16,),
                 Row(
                   children: [
-                    Text('ویرایش', style: Theme
-                        .of(context)
-                        .textTheme
-                        .bodyMedium,),
-                    Icon(Icons.edit, size: 16, color: SysColor.onBackground,),
-
+                    Icon(
+                      CupertinoIcons.bell_slash,
+                      size: 16,
+                      color: SysColor.onBackground,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'ویرایش',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Icon(
+                          Icons.edit,
+                          size: 16,
+                          color: SysColor.onBackground,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'جزییات',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: SysColor.onBackground,
+                      size: 16,
+                    ),
                   ],
                 ),
               ],
-            )
-          ],
-        ),
-
-        //--- name ---//
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(child: Text('تولد غزل', style: Theme
-                .of(context)
-                .textTheme
-                .labelMedium, textAlign: TextAlign.right,)),
-          ],
-        ),
-
-        //--- date ---//
-        Row(
-          textDirection: TextDirection.rtl,
-          children: [
-            Icon(CupertinoIcons.calendar_today, size: 16, color: SysColor.error,),
-            SizedBox(width: 8,) ,
-            Text('1373/10/03', style: Theme
-                .of(context)
-                .textTheme
-                .bodyMedium,),
-
-          ],
-        ) ,
-          //--- remain days ---//
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            //--- name ---//
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                    child: Text(
+                  'تولد غزل',
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: TextAlign.right,
+                )),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            //--- date ---//
+            Row(
+              textDirection: TextDirection.rtl,
+              children: [
+                Icon(
+                  CupertinoIcons.calendar_today,
+                  size: 16,
+                  color: SysColor.error,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  '1373/10/03',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            //--- remain days ---//
 
             Row(
               textDirection: TextDirection.rtl,
               children: [
-                Icon(Icons.cake_rounded, size: 16, color: SysColor.error,),
-                SizedBox(width: 8,) ,
-                Text('2 ماه و 20 روز دیگر تا تولد غزل', style: Theme
-                    .of(context)
-                    .textTheme
-                    .bodyMedium,),
-
+                Icon(
+                  Icons.cake_rounded,
+                  size: 16,
+                  color: SysColor.error,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  '2 ماه و 20 روز دیگر تا تولد غزل',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
               ],
-            ) ,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
 
-          //--- notif message---//
+            //--- notif message---//
             Row(
               textDirection: TextDirection.rtl,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(2)) ,
-                    color: RefColor.pastelYellow ,
-
+                    borderRadius: BorderRadius.all(Radius.circular(2)),
+                    color: RefColor.pastelYellow,
                   ),
-                  child:   Padding(
-                    padding: const EdgeInsets.fromLTRB(8 , 0 , 8 , 0),
-                    child: Text('۱۰ روز زودتر به من اطلاع بده', style: Theme
-                        .of(context)
-                        .textTheme
-                        .bodySmall!.copyWith(color: RefColor.darkerYellow) ,
-                    textAlign: TextAlign.right),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                    child: Text('۱۰ روز زودتر به من اطلاع بده',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .copyWith(color: RefColor.darkerYellow),
+                        textAlign: TextAlign.right),
                   ),
                 ),
               ],
-            )
+            ),
+            const SizedBox(
+              height: 8,
+            ),
           ],
         ),
       ),
