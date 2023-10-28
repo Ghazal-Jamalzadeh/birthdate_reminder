@@ -1,3 +1,4 @@
+import 'package:birthdate_reminder/ui/screens/insert/insert-screen.dart';
 import 'package:birthdate_reminder/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(4)),
 
         onPressed: () {
-          // Add your action here
+          Navigator.push(context, CupertinoPageRoute(builder: (context) => InsertScreen(),)) ;
         },
         child: Icon( CupertinoIcons.plus, size: 32, color: Colors.white,),
         tooltip: 'Add',
