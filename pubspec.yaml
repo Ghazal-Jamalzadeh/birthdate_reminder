@@ -42,6 +42,8 @@ dependencies:
   persian_datetimepickers: ^1.0.3
   lottie: ^2.6.0
   flutter_localization: ^0.1.14
+  awesome_notifications_core: ^0.8.0 # <~ always ensure to use the latest version
+  awesome_notifications: any # <~ this version is managed by awesome_notifications_core package
 
 dev_dependencies:
   flutter_test:
