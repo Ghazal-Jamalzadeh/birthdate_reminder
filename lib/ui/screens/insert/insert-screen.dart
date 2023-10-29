@@ -4,6 +4,9 @@ import 'package:birthdate_reminder/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../utils/notification-controller.dart';
+import '../../../utils/notifications_util.dart';
+
 class InsertScreen extends StatefulWidget {
    InsertScreen({Key? key}) : super(key: key);
 
@@ -31,19 +34,64 @@ class _InsertScreenState extends State<InsertScreen> {
         )],
       ),
 
-      floatingActionButton: FloatingActionButton.extended(onPressed: (){
+      floatingActionButton: FloatingActionButton.extended(onPressed: () async{
         // Navigator.pop(context) ;
 
-        AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+        NotificationUtils.requestBasicPermissionToSendNotifications(context) ;
+
+/*        await AwesomeNotifications().createNotification(
+            content: NotificationContent(
+            id: -1,
+            channelKey: 'scheduled',
+            title: 'Wait 5 seconds to show',
+            body: 'Now it is 5 seconds later.',
+            wakeUpScreen: true,
+            category: NotificationCategory.Alarm,
+        ),
+        schedule: NotificationInterval(
+        interval: 5,
+        timeZone:  await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+        preciseAlarm: true,
+        ));*/
+
+     /*   AwesomeNotifications().isNotificationAllowed().then((isAllowed) async {
           if (!isAllowed) {
             // This is just a basic example. For real apps, you must show some
             // friendly dialog box before call the request method.
             // This is very important to not harm the user experience
             AwesomeNotifications().requestPermissionToSendNotifications();
+            debugPrint('not allowed...') ;
           }else{
-            //TODO send notofication
+            debugPrint('show notification ') ;
+            await AwesomeNotifications().createNotification(
+                content: NotificationContent(
+                    id: -1, // -1 is replaced by a random number
+                    channelKey: 'alerts',
+                    title: 'title',
+                    // body: body,
+                    // largeIcon: ,
+                    // icon: 'asset://assets/icons/filter.png',
+                    // icon: 'https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png',
+                    // bigPicture: 'https://storage.googleapis.com/cms-storage-bucket/d406c736e7c4c57f5f61.png',
+                    // largeIcon: 'https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png',
+                    //'asset://assets/images/balloons-in-sky.jpg',
+
+                    notificationLayout: NotificationLayout.Default,
+                    payload: {
+                      'notificationId': '1234567890'
+                    }),
+                actionButtons: [
+                  // NotificationActionButton(key: 'REDIRECT', label: 'Redirect'),
+                  NotificationActionButton(
+                      key: 'DISMISS',
+                      label: 'بستن',
+                      actionType: ActionType.DismissAction,
+                      isDangerousOption: true)
+                ],
+                schedule: NotificationCalendar.fromDate(
+                    date: DateTime.now().add(const Duration(seconds: 3))));
           }
-        });
+        });*/
 
 
       },

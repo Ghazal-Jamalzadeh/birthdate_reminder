@@ -23,15 +23,10 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    // Only after at least the action method is set, the notification events are delivered
-    AwesomeNotifications().setListeners(
-        onActionReceivedMethod:         NotificationController.onActionReceivedMethod,
-        onNotificationCreatedMethod:    NotificationController.onNotificationCreatedMethod,
-        onNotificationDisplayedMethod:  NotificationController.onNotificationDisplayedMethod,
-        onDismissActionReceivedMethod:  NotificationController.onDismissActionReceivedMethod
-    );
+    NotificationController.initializeNotificationsEventListeners();
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
