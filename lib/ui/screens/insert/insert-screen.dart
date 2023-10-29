@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:birthdate_reminder/ui/widgets/text-field/my-text-field.dart';
 import 'package:birthdate_reminder/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +32,20 @@ class _InsertScreenState extends State<InsertScreen> {
       ),
 
       floatingActionButton: FloatingActionButton.extended(onPressed: (){
-        Navigator.pop(context) ;
+        // Navigator.pop(context) ;
+
+        AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+          if (!isAllowed) {
+            // This is just a basic example. For real apps, you must show some
+            // friendly dialog box before call the request method.
+            // This is very important to not harm the user experience
+            AwesomeNotifications().requestPermissionToSendNotifications();
+          }else{
+            //TODO send notofication
+          }
+        });
+
+
       },
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4)),
