@@ -1,0 +1,4 @@
+important commands :
+
+hive auto generate model: بعد از هر بار تغییر در مدل
+flutter packages pub run build_runner build
