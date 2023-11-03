@@ -1,9 +1,11 @@
 import 'package:birthdate_reminder/data/data-source/birthdate-data-source.dart';
 import 'package:birthdate_reminder/data/models/birthdate.dart';
 import 'package:birthdate_reminder/data/repository/birthdate-repository.dart';
+import 'package:birthdate_reminder/ui/screens/insert/bloc/insert_bloc.dart';
 import 'package:birthdate_reminder/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'app.dart';
@@ -48,9 +50,15 @@ void main() async {
   Hive.registerAdapter(BirthdateAdapter());
   await Hive.openBox<Birthdate>(birthdateBoxName);
   runApp(MultiProvider(providers: [
+    Provider<BirthdateDataSource>(create: (context) => BirthdateDataSource(Hive.box(birthdateBoxName)))  ,
+    
+    Provider<BirthdateRepository>(create: (context) => BirthdateRepository(context.read<BirthdateDataSource>())) , 
+    
     ChangeNotifierProvider<BirthdateRepository>(
         create: (BuildContext context) =>
-            BirthdateRepository(BirthdateDataSource(Hive.box(birthdateBoxName)))),
+            BirthdateRepository(context.read<BirthdateDataSource>())),
+
+    BlocProvider(create: (context) => InsertBloc(context.read<BirthdateRepository>()),)
   ],
       child: const MyApp()));
 }

@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
           Consumer<BirthdateRepository>(
             builder: (context, repository, child) {
               List<Birthdate> list = repository.getAll() ;
+              print(list.length.toString()) ;
              return list.isEmpty ? Text('empty wwnfnf w fer fer  wf er  fefef e fe f') : Expanded(
                child: ListView.builder(
                  padding: EdgeInsets.fromLTRB(0, 56, 0, 32),
