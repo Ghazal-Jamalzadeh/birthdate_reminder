@@ -1,4 +1,6 @@
+import 'package:birthdate_reminder/data/data-source/birthdate-data-source.dart';
 import 'package:birthdate_reminder/data/models/birthdate.dart';
+import 'package:birthdate_reminder/data/repository/birthdate-repository.dart';
 import 'package:birthdate_reminder/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
@@ -6,6 +8,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'app.dart';
 import 'notification-controller.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
 /*  //--- init awesome notifications ---//
@@ -42,9 +45,15 @@ void main() async {
 
   //Hive
   await Hive.initFlutter();
-  Hive.registerAdapter(BirthdateAdapter()) ;
-  await Hive.openBox<Birthdate>(birthdateBoxName) ;
-  runApp(const MyApp());
+  Hive.registerAdapter(BirthdateAdapter());
+  await Hive.openBox<Birthdate>(birthdateBoxName);
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<BirthdateRepository>(
+        create: (BuildContext context) =>
+            BirthdateRepository(context.read<BirthdateDataSource>())),
+    Provider<BirthdateDataSource>(
+        create: (context) => BirthdateDataSource(Hive.box(birthdateBoxName)))
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
