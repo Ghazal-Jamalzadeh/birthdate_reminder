@@ -1,7 +1,10 @@
+import 'package:birthdate_reminder/data/models/birthdate.dart';
+import 'package:birthdate_reminder/data/repository/birthdate-repository.dart';
 import 'package:birthdate_reminder/ui/screens/insert/insert-screen.dart';
 import 'package:birthdate_reminder/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/cards/birthdate-cards.dart';
 
@@ -26,17 +29,23 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: RefColor.pastelBlue,
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.fromLTRB(0, 56, 0, 32),
-              physics: BouncingScrollPhysics(),
-              itemCount: 10,
-              itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(16 , 8 , 16 , 8),
-                child: BirthdateCard(),
-              );
-            },),
+          Consumer<BirthdateRepository>(
+            builder: (context, repository, child) {
+              List<Birthdate> list = repository.getAll() ;
+             return list.isEmpty ? Text('empty wwnfnf w fer fer  wf er  fefef e fe f') : Expanded(
+               child: ListView.builder(
+                 padding: EdgeInsets.fromLTRB(0, 56, 0, 32),
+                 physics: BouncingScrollPhysics(),
+                 itemCount: list.length,
+                 itemBuilder: (context, index) {
+                   return Padding(
+                     padding: const EdgeInsets.fromLTRB(16 , 8 , 16 , 8),
+                     child: BirthdateCard(),
+                   );
+                 },),
+             ), ;
+
+            },
           ),
         ],
       ),

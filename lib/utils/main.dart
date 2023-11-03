@@ -50,10 +50,9 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<BirthdateRepository>(
         create: (BuildContext context) =>
-            BirthdateRepository(context.read<BirthdateDataSource>())),
-    Provider<BirthdateDataSource>(
-        create: (context) => BirthdateDataSource(Hive.box(birthdateBoxName)))
-  ], child: const MyApp()));
+            BirthdateRepository(BirthdateDataSource(Hive.box(birthdateBoxName)))),
+  ],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
