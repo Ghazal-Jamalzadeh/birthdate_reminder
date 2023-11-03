@@ -2,6 +2,7 @@ import 'package:birthdate_reminder/data/models/birthdate.dart';
 import 'package:birthdate_reminder/data/repository/birthdate-repository.dart';
 import 'package:birthdate_reminder/ui/screens/insert/insert-screen.dart';
 import 'package:birthdate_reminder/utils/colors.dart';
+import 'package:birthdate_reminder/utils/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,7 @@ class HomeScreen extends StatelessWidget {
       body: Consumer<BirthdateRepository>(
         builder: (context, repository, child) {
           List<Birthdate> list = repository.getAll();
+
           return list.isEmpty
               ? const Center(child: Text('empty'))
               : Column(

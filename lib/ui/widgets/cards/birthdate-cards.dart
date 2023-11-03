@@ -1,5 +1,6 @@
 import 'package:birthdate_reminder/data/models/birthdate.dart';
 import 'package:birthdate_reminder/utils/colors.dart';
+import 'package:birthdate_reminder/utils/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -118,7 +119,7 @@ class BirthdateCard extends StatelessWidget {
                   width: 8,
                 ),
                 Text(
-                  '2 ماه و 20 روز دیگر تا تولد غزل',
+                  birthdate.dateOfBirth.calculateDifference().formatDate(birthdate.name),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
