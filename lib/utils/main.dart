@@ -32,9 +32,9 @@ void main() async {
     const MyApp();
   }*/
 
-  //initialize Awesome Notifications
-  await NotificationController.initializeLocalNotifications();
-  await NotificationController.interceptInitialCallActionRequest();
+  //initialize Awesome Notifications ++++
+  // await NotificationController.initializeLocalNotifications();
+  // await NotificationController.interceptInitialCallActionRequest();
   runApp(const MyApp());
 }
 

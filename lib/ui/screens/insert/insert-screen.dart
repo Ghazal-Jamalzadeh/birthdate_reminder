@@ -37,7 +37,8 @@ class _InsertScreenState extends State<InsertScreen> {
       floatingActionButton: FloatingActionButton.extended(onPressed: () async{
         // Navigator.pop(context) ;
 
-        NotificationUtils.requestBasicPermissionToSendNotifications(context) ;
+        //+++++++
+        // NotificationUtils.requestBasicPermissionToSendNotifications(context) ;
 
 /*        await AwesomeNotifications().createNotification(
             content: NotificationContent(

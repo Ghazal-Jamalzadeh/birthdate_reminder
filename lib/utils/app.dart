@@ -23,7 +23,7 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    NotificationController.initializeNotificationsEventListeners();
+    // NotificationController.initializeNotificationsEventListeners();
     super.initState();
   }
 
