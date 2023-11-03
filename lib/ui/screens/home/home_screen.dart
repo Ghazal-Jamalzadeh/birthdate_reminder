@@ -15,41 +15,48 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4)),
-
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         onPressed: () {
-          Navigator.push(context, CupertinoPageRoute(builder: (context) => InsertScreen(),)) ;
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => InsertScreen(),
+              ));
         },
-        child: Icon( CupertinoIcons.plus, size: 32, color: Colors.white,),
         tooltip: 'Add',
         backgroundColor: RefColor.darkPink,
+        child: const Icon(
+          CupertinoIcons.plus,
+          size: 32,
+          color: Colors.white,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       backgroundColor: RefColor.pastelBlue,
-      body: Column(
-        children: [
-          Consumer<BirthdateRepository>(
-            builder: (context, repository, child) {
-              List<Birthdate> list = repository.getAll() ;
-              print(list.length.toString()) ;
-             return list.isEmpty ? Text('empty wwnfnf w fer fer  wf er  fefef e fe f') : Expanded(
-               child: ListView.builder(
-                 padding: EdgeInsets.fromLTRB(0, 56, 0, 32),
-                 physics: BouncingScrollPhysics(),
-                 itemCount: list.length,
-                 itemBuilder: (context, index) {
-                   return Padding(
-                     padding: const EdgeInsets.fromLTRB(16 , 8 , 16 , 8),
-                     child: BirthdateCard(),
-                   );
-                 },),
-             ) ;
-
-            },
-          ),
-        ],
+      body: Consumer<BirthdateRepository>(
+        builder: (context, repository, child) {
+          List<Birthdate> list = repository.getAll();
+          return list.isEmpty
+              ? const Center(child: Text('empty'))
+              : Column(
+                children: [
+                  Expanded(
+                      child: ListView.builder(
+                        padding: EdgeInsets.fromLTRB(0, 56, 0, 32),
+                        physics: BouncingScrollPhysics(),
+                        itemCount: list.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                            child: BirthdateCard(birthdate: list[index]),
+                          );
+                        },
+                      ),
+                    ),
+                ],
+              );
+        },
       ),
-    ) ;
+    );
   }
 }

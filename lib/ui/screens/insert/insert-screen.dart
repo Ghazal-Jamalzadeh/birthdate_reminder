@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
+import 'package:persian_datetimepickers/persian_datetimepickers.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/data-source/birthdate-data-source.dart';
@@ -29,6 +30,10 @@ class _InsertScreenState extends State<InsertScreen> {
   TextEditingController dayController = TextEditingController() ;
   bool notifyMeTheSameDay = true ;
   bool notifyMeEarlier = false ;
+  int reminderId = 0 ;
+  String _selectedDateFancyString = ''; // سه شنبه ۲۷ دی ۱۴۰۱
+  String _selectedTimeFancyString = ''; // 12:30
+  DateTime _selectedDateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +51,15 @@ class _InsertScreenState extends State<InsertScreen> {
 
           context.read<InsertBloc>().add(AddNewBirthdate(Birthdate(
             id: DateTime.now().millisecond ,
-            dateOfBirth: DateTime.now()  ,
-            dateFancyString: 'یک روز سرد' ,
-            name: 'مهسا'
+            name: nameController.value.text ,
+            dateOfBirth: _selectedDateTime ,
+            dateFancyString: _selectedDateFancyString ,
+            sendMeNotification: notifyMeTheSameDay ,
+            earlyNotification: notifyMeEarlier ,
+            daysEarlier: int.parse(dayController.value.text)
           ))) ;
 
-          // Navigator.pop(context) ;
+          Navigator.pop(context) ;
 
           //+++++++
           // NotificationUtils.requestBasicPermissionToSendNotifications(context) ;
@@ -131,7 +139,8 @@ class _InsertScreenState extends State<InsertScreen> {
             padding: const EdgeInsets.fromLTRB(16 , 52 , 16 , 32),
             child: Column(
               children: [
-                MyTextField(controller: nameController ,
+                MyTextField(
+                  controller: nameController ,
                 label: 'اسم',
                 filledColor: Colors.white,
                 isMandatory: true,) ,
@@ -144,16 +153,31 @@ class _InsertScreenState extends State<InsertScreen> {
                       style: Theme.of(context).textTheme.labelMedium!.copyWith(color: SysColor.onSurface),
                     ),
                     SizedBox(height: 4,) ,
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(2) ,
-                          border: Border.all(color: RefColor.darkPink , width: 1)
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16 , 12 , 16 , 12),
-                        child: Text('۳ دی ۷۳' , style: Theme.of(context).textTheme.bodyLarge,),
+                    GestureDetector(
+                      onTap: () async {
+                        // Date picker
+                        final DateTime? date = await showPersianDatePicker(
+                          context: context,
+                        );
+
+                        if (date != null) {
+                          setState(() {
+                           _selectedDateTime = date;
+                           _selectedDateFancyString = date.toFancyString();
+                          });
+                        }
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(2) ,
+                            border: Border.all(color: RefColor.darkPink , width: 1)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16 , 12 , 16 , 12),
+                          child: Text(_selectedDateFancyString , style: Theme.of(context).textTheme.bodyLarge,),
+                        ),
                       ),
                     ) ,
 
