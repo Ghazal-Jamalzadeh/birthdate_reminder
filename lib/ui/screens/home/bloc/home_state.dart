@@ -1,6 +1,11 @@
 part of 'home_bloc.dart';
 
-@immutable
 abstract class HomeState {}
 
 class HomeInitial extends HomeState {}
+
+class HomeLoaded extends HomeState {
+  List<Birthdate> data ;
+
+  HomeLoaded(this.data);
+}
