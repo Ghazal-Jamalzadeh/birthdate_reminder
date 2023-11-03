@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'app.dart';
 import 'notification-controller.dart';
 
@@ -35,6 +37,9 @@ void main() async {
   //initialize Awesome Notifications ++++
   // await NotificationController.initializeLocalNotifications();
   // await NotificationController.interceptInitialCallActionRequest();
+
+  //Hive
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 
